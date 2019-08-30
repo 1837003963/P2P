@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2p.mapper.ZjMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2p.model.Zj" >
+    <constructor >
+      <idArg column="zj_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="zj_lx" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="zj_jtdf" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="zj_jylx" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="zj_yxzj" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="zj_kyye" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="zj_djje" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="zj_dsje" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="zj_fssj" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="zj_bz" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="zj_sjbh" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    zj_id, zj_lx, zj_jtdf, zj_jylx, zj_yxzj, zj_kyye, zj_djje, zj_dsje, zj_fssj, zj_bz, 
+    zj_sjbh
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_zj
+    where zj_id = #{zjId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_zj
+    where zj_id = #{zjId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2p.model.Zj" >
+    insert into t_zj (zj_id, zj_lx, zj_jtdf, 
+      zj_jylx, zj_yxzj, zj_kyye, 
+      zj_djje, zj_dsje, zj_fssj, 
+      zj_bz, zj_sjbh)
+    values (#{zjId,jdbcType=INTEGER}, #{zjLx,jdbcType=INTEGER}, #{zjJtdf,jdbcType=VARCHAR}, 
+      #{zjJylx,jdbcType=VARCHAR}, #{zjYxzj,jdbcType=BIGINT}, #{zjKyye,jdbcType=BIGINT}, 
+      #{zjDjje,jdbcType=BIGINT}, #{zjDsje,jdbcType=BIGINT}, #{zjFssj,jdbcType=VARCHAR}, 
+      #{zjBz,jdbcType=VARCHAR}, #{zjSjbh,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2p.model.Zj" >
+    insert into t_zj
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="zjId != null" >
+        zj_id,
+      </if>
+      <if test="zjLx != null" >
+        zj_lx,
+      </if>
+      <if test="zjJtdf != null" >
+        zj_jtdf,
+      </if>
+      <if test="zjJylx != null" >
+        zj_jylx,
+      </if>
+      <if test="zjYxzj != null" >
+        zj_yxzj,
+      </if>
+      <if test="zjKyye != null" >
+        zj_kyye,
+      </if>
+      <if test="zjDjje != null" >
+        zj_djje,
+      </if>
+      <if test="zjDsje != null" >
+        zj_dsje,
+      </if>
+      <if test="zjFssj != null" >
+        zj_fssj,
+      </if>
+      <if test="zjBz != null" >
+        zj_bz,
+      </if>
+      <if test="zjSjbh != null" >
+        zj_sjbh,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="zjId != null" >
+        #{zjId,jdbcType=INTEGER},
+      </if>
+      <if test="zjLx != null" >
+        #{zjLx,jdbcType=INTEGER},
+      </if>
+      <if test="zjJtdf != null" >
+        #{zjJtdf,jdbcType=VARCHAR},
+      </if>
+      <if test="zjJylx != null" >
+        #{zjJylx,jdbcType=VARCHAR},
+      </if>
+      <if test="zjYxzj != null" >
+        #{zjYxzj,jdbcType=BIGINT},
+      </if>
+      <if test="zjKyye != null" >
+        #{zjKyye,jdbcType=BIGINT},
+      </if>
+      <if test="zjDjje != null" >
+        #{zjDjje,jdbcType=BIGINT},
+      </if>
+      <if test="zjDsje != null" >
+        #{zjDsje,jdbcType=BIGINT},
+      </if>
+      <if test="zjFssj != null" >
+        #{zjFssj,jdbcType=VARCHAR},
+      </if>
+      <if test="zjBz != null" >
+        #{zjBz,jdbcType=VARCHAR},
+      </if>
+      <if test="zjSjbh != null" >
+        #{zjSjbh,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2p.model.Zj" >
+    update t_zj
+    <set >
+      <if test="zjLx != null" >
+        zj_lx = #{zjLx,jdbcType=INTEGER},
+      </if>
+      <if test="zjJtdf != null" >
+        zj_jtdf = #{zjJtdf,jdbcType=VARCHAR},
+      </if>
+      <if test="zjJylx != null" >
+        zj_jylx = #{zjJylx,jdbcType=VARCHAR},
+      </if>
+      <if test="zjYxzj != null" >
+        zj_yxzj = #{zjYxzj,jdbcType=BIGINT},
+      </if>
+      <if test="zjKyye != null" >
+        zj_kyye = #{zjKyye,jdbcType=BIGINT},
+      </if>
+      <if test="zjDjje != null" >
+        zj_djje = #{zjDjje,jdbcType=BIGINT},
+      </if>
+      <if test="zjDsje != null" >
+        zj_dsje = #{zjDsje,jdbcType=BIGINT},
+      </if>
+      <if test="zjFssj != null" >
+        zj_fssj = #{zjFssj,jdbcType=VARCHAR},
+      </if>
+      <if test="zjBz != null" >
+        zj_bz = #{zjBz,jdbcType=VARCHAR},
+      </if>
+      <if test="zjSjbh != null" >
+        zj_sjbh = #{zjSjbh,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where zj_id = #{zjId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2p.model.Zj" >
+    update t_zj
+    set zj_lx = #{zjLx,jdbcType=INTEGER},
+      zj_jtdf = #{zjJtdf,jdbcType=VARCHAR},
+      zj_jylx = #{zjJylx,jdbcType=VARCHAR},
+      zj_yxzj = #{zjYxzj,jdbcType=BIGINT},
+      zj_kyye = #{zjKyye,jdbcType=BIGINT},
+      zj_djje = #{zjDjje,jdbcType=BIGINT},
+      zj_dsje = #{zjDsje,jdbcType=BIGINT},
+      zj_fssj = #{zjFssj,jdbcType=VARCHAR},
+      zj_bz = #{zjBz,jdbcType=VARCHAR},
+      zj_sjbh = #{zjSjbh,jdbcType=VARCHAR}
+    where zj_id = #{zjId,jdbcType=INTEGER}
+  </update>
+</mapper>

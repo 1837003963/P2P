@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2p.mapper.ZdMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2p.model.Zd" >
+    <constructor >
+      <idArg column="zd_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="zd_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="zd_nr" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="zd_zt" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    zd_id, zd_name, zd_nr, zd_zt
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_zd
+    where zd_id = #{zdId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_zd
+    where zd_id = #{zdId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2p.model.Zd" >
+    insert into t_zd (zd_id, zd_name, zd_nr, 
+      zd_zt)
+    values (#{zdId,jdbcType=INTEGER}, #{zdName,jdbcType=VARCHAR}, #{zdNr,jdbcType=VARCHAR}, 
+      #{zdZt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2p.model.Zd" >
+    insert into t_zd
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="zdId != null" >
+        zd_id,
+      </if>
+      <if test="zdName != null" >
+        zd_name,
+      </if>
+      <if test="zdNr != null" >
+        zd_nr,
+      </if>
+      <if test="zdZt != null" >
+        zd_zt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="zdId != null" >
+        #{zdId,jdbcType=INTEGER},
+      </if>
+      <if test="zdName != null" >
+        #{zdName,jdbcType=VARCHAR},
+      </if>
+      <if test="zdNr != null" >
+        #{zdNr,jdbcType=VARCHAR},
+      </if>
+      <if test="zdZt != null" >
+        #{zdZt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2p.model.Zd" >
+    update t_zd
+    <set >
+      <if test="zdName != null" >
+        zd_name = #{zdName,jdbcType=VARCHAR},
+      </if>
+      <if test="zdNr != null" >
+        zd_nr = #{zdNr,jdbcType=VARCHAR},
+      </if>
+      <if test="zdZt != null" >
+        zd_zt = #{zdZt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where zd_id = #{zdId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2p.model.Zd" >
+    update t_zd
+    set zd_name = #{zdName,jdbcType=VARCHAR},
+      zd_nr = #{zdNr,jdbcType=VARCHAR},
+      zd_zt = #{zdZt,jdbcType=VARCHAR}
+    where zd_id = #{zdId,jdbcType=INTEGER}
+  </update>
+</mapper>

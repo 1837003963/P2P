@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2p.mapper.XtMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2p.model.Xt" >
+    <constructor >
+      <idArg column="xt_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="xt_ye" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="xt_sm" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="xt_gl" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="xt_zt" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="xt_sj" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="xt_je" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    xt_id, xt_ye, xt_sm, xt_gl, xt_zt, xt_sj, xt_je
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_xt
+    where xt_id = #{xtId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_xt
+    where xt_id = #{xtId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2p.model.Xt" >
+    insert into t_xt (xt_id, xt_ye, xt_sm, 
+      xt_gl, xt_zt, xt_sj, xt_je
+      )
+    values (#{xtId,jdbcType=INTEGER}, #{xtYe,jdbcType=BIGINT}, #{xtSm,jdbcType=VARCHAR}, 
+      #{xtGl,jdbcType=BIGINT}, #{xtZt,jdbcType=VARCHAR}, #{xtSj,jdbcType=VARCHAR}, #{xtJe,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2p.model.Xt" >
+    insert into t_xt
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="xtId != null" >
+        xt_id,
+      </if>
+      <if test="xtYe != null" >
+        xt_ye,
+      </if>
+      <if test="xtSm != null" >
+        xt_sm,
+      </if>
+      <if test="xtGl != null" >
+        xt_gl,
+      </if>
+      <if test="xtZt != null" >
+        xt_zt,
+      </if>
+      <if test="xtSj != null" >
+        xt_sj,
+      </if>
+      <if test="xtJe != null" >
+        xt_je,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="xtId != null" >
+        #{xtId,jdbcType=INTEGER},
+      </if>
+      <if test="xtYe != null" >
+        #{xtYe,jdbcType=BIGINT},
+      </if>
+      <if test="xtSm != null" >
+        #{xtSm,jdbcType=VARCHAR},
+      </if>
+      <if test="xtGl != null" >
+        #{xtGl,jdbcType=BIGINT},
+      </if>
+      <if test="xtZt != null" >
+        #{xtZt,jdbcType=VARCHAR},
+      </if>
+      <if test="xtSj != null" >
+        #{xtSj,jdbcType=VARCHAR},
+      </if>
+      <if test="xtJe != null" >
+        #{xtJe,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2p.model.Xt" >
+    update t_xt
+    <set >
+      <if test="xtYe != null" >
+        xt_ye = #{xtYe,jdbcType=BIGINT},
+      </if>
+      <if test="xtSm != null" >
+        xt_sm = #{xtSm,jdbcType=VARCHAR},
+      </if>
+      <if test="xtGl != null" >
+        xt_gl = #{xtGl,jdbcType=BIGINT},
+      </if>
+      <if test="xtZt != null" >
+        xt_zt = #{xtZt,jdbcType=VARCHAR},
+      </if>
+      <if test="xtSj != null" >
+        xt_sj = #{xtSj,jdbcType=VARCHAR},
+      </if>
+      <if test="xtJe != null" >
+        xt_je = #{xtJe,jdbcType=BIGINT},
+      </if>
+    </set>
+    where xt_id = #{xtId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2p.model.Xt" >
+    update t_xt
+    set xt_ye = #{xtYe,jdbcType=BIGINT},
+      xt_sm = #{xtSm,jdbcType=VARCHAR},
+      xt_gl = #{xtGl,jdbcType=BIGINT},
+      xt_zt = #{xtZt,jdbcType=VARCHAR},
+      xt_sj = #{xtSj,jdbcType=VARCHAR},
+      xt_je = #{xtJe,jdbcType=BIGINT}
+    where xt_id = #{xtId,jdbcType=INTEGER}
+  </update>
+</mapper>

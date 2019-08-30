@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2p.mapper.SxfMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2p.model.Sxf" >
+    <constructor >
+      <idArg column="sxf_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="sxf_je" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="sxf_gg" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="sxf_lx" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sxf_bz" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sxf_bh" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="sxf_sj" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sxf_zt" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    sxf_id, sxf_je, sxf_gg, sxf_lx, sxf_bz, sxf_bh, sxf_sj, sxf_zt
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sxf
+    where sxf_id = #{sxfId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_sxf
+    where sxf_id = #{sxfId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2p.model.Sxf" >
+    insert into t_sxf (sxf_id, sxf_je, sxf_gg, 
+      sxf_lx, sxf_bz, sxf_bh, 
+      sxf_sj, sxf_zt)
+    values (#{sxfId,jdbcType=INTEGER}, #{sxfJe,jdbcType=BIGINT}, #{sxfGg,jdbcType=BIGINT}, 
+      #{sxfLx,jdbcType=VARCHAR}, #{sxfBz,jdbcType=VARCHAR}, #{sxfBh,jdbcType=BIGINT}, 
+      #{sxfSj,jdbcType=VARCHAR}, #{sxfZt,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2p.model.Sxf" >
+    insert into t_sxf
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sxfId != null" >
+        sxf_id,
+      </if>
+      <if test="sxfJe != null" >
+        sxf_je,
+      </if>
+      <if test="sxfGg != null" >
+        sxf_gg,
+      </if>
+      <if test="sxfLx != null" >
+        sxf_lx,
+      </if>
+      <if test="sxfBz != null" >
+        sxf_bz,
+      </if>
+      <if test="sxfBh != null" >
+        sxf_bh,
+      </if>
+      <if test="sxfSj != null" >
+        sxf_sj,
+      </if>
+      <if test="sxfZt != null" >
+        sxf_zt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sxfId != null" >
+        #{sxfId,jdbcType=INTEGER},
+      </if>
+      <if test="sxfJe != null" >
+        #{sxfJe,jdbcType=BIGINT},
+      </if>
+      <if test="sxfGg != null" >
+        #{sxfGg,jdbcType=BIGINT},
+      </if>
+      <if test="sxfLx != null" >
+        #{sxfLx,jdbcType=VARCHAR},
+      </if>
+      <if test="sxfBz != null" >
+        #{sxfBz,jdbcType=VARCHAR},
+      </if>
+      <if test="sxfBh != null" >
+        #{sxfBh,jdbcType=BIGINT},
+      </if>
+      <if test="sxfSj != null" >
+        #{sxfSj,jdbcType=VARCHAR},
+      </if>
+      <if test="sxfZt != null" >
+        #{sxfZt,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2p.model.Sxf" >
+    update t_sxf
+    <set >
+      <if test="sxfJe != null" >
+        sxf_je = #{sxfJe,jdbcType=BIGINT},
+      </if>
+      <if test="sxfGg != null" >
+        sxf_gg = #{sxfGg,jdbcType=BIGINT},
+      </if>
+      <if test="sxfLx != null" >
+        sxf_lx = #{sxfLx,jdbcType=VARCHAR},
+      </if>
+      <if test="sxfBz != null" >
+        sxf_bz = #{sxfBz,jdbcType=VARCHAR},
+      </if>
+      <if test="sxfBh != null" >
+        sxf_bh = #{sxfBh,jdbcType=BIGINT},
+      </if>
+      <if test="sxfSj != null" >
+        sxf_sj = #{sxfSj,jdbcType=VARCHAR},
+      </if>
+      <if test="sxfZt != null" >
+        sxf_zt = #{sxfZt,jdbcType=BIGINT},
+      </if>
+    </set>
+    where sxf_id = #{sxfId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2p.model.Sxf" >
+    update t_sxf
+    set sxf_je = #{sxfJe,jdbcType=BIGINT},
+      sxf_gg = #{sxfGg,jdbcType=BIGINT},
+      sxf_lx = #{sxfLx,jdbcType=VARCHAR},
+      sxf_bz = #{sxfBz,jdbcType=VARCHAR},
+      sxf_bh = #{sxfBh,jdbcType=BIGINT},
+      sxf_sj = #{sxfSj,jdbcType=VARCHAR},
+      sxf_zt = #{sxfZt,jdbcType=BIGINT}
+    where sxf_id = #{sxfId,jdbcType=INTEGER}
+  </update>
+</mapper>

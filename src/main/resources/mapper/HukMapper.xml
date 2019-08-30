@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2p.mapper.HukMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2p.model.Huk" >
+    <constructor >
+      <idArg column="huk_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="huk_cz" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="huk_hk" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="huk_djhke" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="huk_kyye" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="huk_bz" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="huk_yx" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="huk_zt" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    huk_id, huk_cz, huk_hk, huk_djhke, huk_kyye, huk_bz, huk_yx, huk_zt
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_huk
+    where huk_id = #{hukId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_huk
+    where huk_id = #{hukId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2p.model.Huk" >
+    insert into t_huk (huk_id, huk_cz, huk_hk, 
+      huk_djhke, huk_kyye, huk_bz, 
+      huk_yx, huk_zt)
+    values (#{hukId,jdbcType=INTEGER}, #{hukCz,jdbcType=BIGINT}, #{hukHk,jdbcType=BIGINT}, 
+      #{hukDjhke,jdbcType=BIGINT}, #{hukKyye,jdbcType=BIGINT}, #{hukBz,jdbcType=VARCHAR}, 
+      #{hukYx,jdbcType=BIGINT}, #{hukZt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2p.model.Huk" >
+    insert into t_huk
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="hukId != null" >
+        huk_id,
+      </if>
+      <if test="hukCz != null" >
+        huk_cz,
+      </if>
+      <if test="hukHk != null" >
+        huk_hk,
+      </if>
+      <if test="hukDjhke != null" >
+        huk_djhke,
+      </if>
+      <if test="hukKyye != null" >
+        huk_kyye,
+      </if>
+      <if test="hukBz != null" >
+        huk_bz,
+      </if>
+      <if test="hukYx != null" >
+        huk_yx,
+      </if>
+      <if test="hukZt != null" >
+        huk_zt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="hukId != null" >
+        #{hukId,jdbcType=INTEGER},
+      </if>
+      <if test="hukCz != null" >
+        #{hukCz,jdbcType=BIGINT},
+      </if>
+      <if test="hukHk != null" >
+        #{hukHk,jdbcType=BIGINT},
+      </if>
+      <if test="hukDjhke != null" >
+        #{hukDjhke,jdbcType=BIGINT},
+      </if>
+      <if test="hukKyye != null" >
+        #{hukKyye,jdbcType=BIGINT},
+      </if>
+      <if test="hukBz != null" >
+        #{hukBz,jdbcType=VARCHAR},
+      </if>
+      <if test="hukYx != null" >
+        #{hukYx,jdbcType=BIGINT},
+      </if>
+      <if test="hukZt != null" >
+        #{hukZt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2p.model.Huk" >
+    update t_huk
+    <set >
+      <if test="hukCz != null" >
+        huk_cz = #{hukCz,jdbcType=BIGINT},
+      </if>
+      <if test="hukHk != null" >
+        huk_hk = #{hukHk,jdbcType=BIGINT},
+      </if>
+      <if test="hukDjhke != null" >
+        huk_djhke = #{hukDjhke,jdbcType=BIGINT},
+      </if>
+      <if test="hukKyye != null" >
+        huk_kyye = #{hukKyye,jdbcType=BIGINT},
+      </if>
+      <if test="hukBz != null" >
+        huk_bz = #{hukBz,jdbcType=VARCHAR},
+      </if>
+      <if test="hukYx != null" >
+        huk_yx = #{hukYx,jdbcType=BIGINT},
+      </if>
+      <if test="hukZt != null" >
+        huk_zt = #{hukZt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where huk_id = #{hukId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2p.model.Huk" >
+    update t_huk
+    set huk_cz = #{hukCz,jdbcType=BIGINT},
+      huk_hk = #{hukHk,jdbcType=BIGINT},
+      huk_djhke = #{hukDjhke,jdbcType=BIGINT},
+      huk_kyye = #{hukKyye,jdbcType=BIGINT},
+      huk_bz = #{hukBz,jdbcType=VARCHAR},
+      huk_yx = #{hukYx,jdbcType=BIGINT},
+      huk_zt = #{hukZt,jdbcType=VARCHAR}
+    where huk_id = #{hukId,jdbcType=INTEGER}
+  </update>
+</mapper>

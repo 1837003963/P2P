@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2p.mapper.PkMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2p.model.Pk" >
+    <constructor >
+      <idArg column="pk_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pk_jine" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="pk_glf" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="pk_srsje" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="pk_yhk" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="pk_yhua" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="pk_sbj" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="pk_slx" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="pk_fak" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="pk_zdjy" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pk_jkqx" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pk_jdjy" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pk_jkyt" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pk_jkbt" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pk_jksm" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pk_jksj" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pk_jklx" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pk_zt" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pk_wcbfb" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pk_jkfbsj" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pk_zzhksj" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pk_zzqx" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pk_xp" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pk_jhfbsj" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pk_id, pk_jine, pk_glf, pk_srsje, pk_yhk, pk_yhua, pk_sbj, pk_slx, pk_fak, pk_zdjy, 
+    pk_jkqx, pk_jdjy, pk_jkyt, pk_jkbt, pk_jksm, pk_jksj, pk_jklx, pk_zt, pk_wcbfb, pk_jkfbsj, 
+    pk_zzhksj, pk_zzqx, pk_xp, pk_jhfbsj
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_pk
+    where pk_id = #{pkId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_pk
+    where pk_id = #{pkId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2p.model.Pk" >
+    insert into t_pk (pk_id, pk_jine, pk_glf, 
+      pk_srsje, pk_yhk, pk_yhua, 
+      pk_sbj, pk_slx, pk_fak, pk_zdjy, 
+      pk_jkqx, pk_jdjy, pk_jkyt, 
+      pk_jkbt, pk_jksm, pk_jksj, 
+      pk_jklx, pk_zt, pk_wcbfb, 
+      pk_jkfbsj, pk_zzhksj, pk_zzqx, 
+      pk_xp, pk_jhfbsj)
+    values (#{pkId,jdbcType=INTEGER}, #{pkJine,jdbcType=BIGINT}, #{pkGlf,jdbcType=BIGINT}, 
+      #{pkSrsje,jdbcType=BIGINT}, #{pkYhk,jdbcType=BIGINT}, #{pkYhua,jdbcType=BIGINT}, 
+      #{pkSbj,jdbcType=BIGINT}, #{pkSlx,jdbcType=BIGINT}, #{pkFak,jdbcType=BIGINT}, #{pkZdjy,jdbcType=VARCHAR}, 
+      #{pkJkqx,jdbcType=VARCHAR}, #{pkJdjy,jdbcType=VARCHAR}, #{pkJkyt,jdbcType=VARCHAR}, 
+      #{pkJkbt,jdbcType=VARCHAR}, #{pkJksm,jdbcType=VARCHAR}, #{pkJksj,jdbcType=VARCHAR}, 
+      #{pkJklx,jdbcType=INTEGER}, #{pkZt,jdbcType=VARCHAR}, #{pkWcbfb,jdbcType=INTEGER}, 
+      #{pkJkfbsj,jdbcType=VARCHAR}, #{pkZzhksj,jdbcType=VARCHAR}, #{pkZzqx,jdbcType=VARCHAR}, 
+      #{pkXp,jdbcType=VARCHAR}, #{pkJhfbsj,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2p.model.Pk" >
+    insert into t_pk
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pkId != null" >
+        pk_id,
+      </if>
+      <if test="pkJine != null" >
+        pk_jine,
+      </if>
+      <if test="pkGlf != null" >
+        pk_glf,
+      </if>
+      <if test="pkSrsje != null" >
+        pk_srsje,
+      </if>
+      <if test="pkYhk != null" >
+        pk_yhk,
+      </if>
+      <if test="pkYhua != null" >
+        pk_yhua,
+      </if>
+      <if test="pkSbj != null" >
+        pk_sbj,
+      </if>
+      <if test="pkSlx != null" >
+        pk_slx,
+      </if>
+      <if test="pkFak != null" >
+        pk_fak,
+      </if>
+      <if test="pkZdjy != null" >
+        pk_zdjy,
+      </if>
+      <if test="pkJkqx != null" >
+        pk_jkqx,
+      </if>
+      <if test="pkJdjy != null" >
+        pk_jdjy,
+      </if>
+      <if test="pkJkyt != null" >
+        pk_jkyt,
+      </if>
+      <if test="pkJkbt != null" >
+        pk_jkbt,
+      </if>
+      <if test="pkJksm != null" >
+        pk_jksm,
+      </if>
+      <if test="pkJksj != null" >
+        pk_jksj,
+      </if>
+      <if test="pkJklx != null" >
+        pk_jklx,
+      </if>
+      <if test="pkZt != null" >
+        pk_zt,
+      </if>
+      <if test="pkWcbfb != null" >
+        pk_wcbfb,
+      </if>
+      <if test="pkJkfbsj != null" >
+        pk_jkfbsj,
+      </if>
+      <if test="pkZzhksj != null" >
+        pk_zzhksj,
+      </if>
+      <if test="pkZzqx != null" >
+        pk_zzqx,
+      </if>
+      <if test="pkXp != null" >
+        pk_xp,
+      </if>
+      <if test="pkJhfbsj != null" >
+        pk_jhfbsj,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pkId != null" >
+        #{pkId,jdbcType=INTEGER},
+      </if>
+      <if test="pkJine != null" >
+        #{pkJine,jdbcType=BIGINT},
+      </if>
+      <if test="pkGlf != null" >
+        #{pkGlf,jdbcType=BIGINT},
+      </if>
+      <if test="pkSrsje != null" >
+        #{pkSrsje,jdbcType=BIGINT},
+      </if>
+      <if test="pkYhk != null" >
+        #{pkYhk,jdbcType=BIGINT},
+      </if>
+      <if test="pkYhua != null" >
+        #{pkYhua,jdbcType=BIGINT},
+      </if>
+      <if test="pkSbj != null" >
+        #{pkSbj,jdbcType=BIGINT},
+      </if>
+      <if test="pkSlx != null" >
+        #{pkSlx,jdbcType=BIGINT},
+      </if>
+      <if test="pkFak != null" >
+        #{pkFak,jdbcType=BIGINT},
+      </if>
+      <if test="pkZdjy != null" >
+        #{pkZdjy,jdbcType=VARCHAR},
+      </if>
+      <if test="pkJkqx != null" >
+        #{pkJkqx,jdbcType=VARCHAR},
+      </if>
+      <if test="pkJdjy != null" >
+        #{pkJdjy,jdbcType=VARCHAR},
+      </if>
+      <if test="pkJkyt != null" >
+        #{pkJkyt,jdbcType=VARCHAR},
+      </if>
+      <if test="pkJkbt != null" >
+        #{pkJkbt,jdbcType=VARCHAR},
+      </if>
+      <if test="pkJksm != null" >
+        #{pkJksm,jdbcType=VARCHAR},
+      </if>
+      <if test="pkJksj != null" >
+        #{pkJksj,jdbcType=VARCHAR},
+      </if>
+      <if test="pkJklx != null" >
+        #{pkJklx,jdbcType=INTEGER},
+      </if>
+      <if test="pkZt != null" >
+        #{pkZt,jdbcType=VARCHAR},
+      </if>
+      <if test="pkWcbfb != null" >
+        #{pkWcbfb,jdbcType=INTEGER},
+      </if>
+      <if test="pkJkfbsj != null" >
+        #{pkJkfbsj,jdbcType=VARCHAR},
+      </if>
+      <if test="pkZzhksj != null" >
+        #{pkZzhksj,jdbcType=VARCHAR},
+      </if>
+      <if test="pkZzqx != null" >
+        #{pkZzqx,jdbcType=VARCHAR},
+      </if>
+      <if test="pkXp != null" >
+        #{pkXp,jdbcType=VARCHAR},
+      </if>
+      <if test="pkJhfbsj != null" >
+        #{pkJhfbsj,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2p.model.Pk" >
+    update t_pk
+    <set >
+      <if test="pkJine != null" >
+        pk_jine = #{pkJine,jdbcType=BIGINT},
+      </if>
+      <if test="pkGlf != null" >
+        pk_glf = #{pkGlf,jdbcType=BIGINT},
+      </if>
+      <if test="pkSrsje != null" >
+        pk_srsje = #{pkSrsje,jdbcType=BIGINT},
+      </if>
+      <if test="pkYhk != null" >
+        pk_yhk = #{pkYhk,jdbcType=BIGINT},
+      </if>
+      <if test="pkYhua != null" >
+        pk_yhua = #{pkYhua,jdbcType=BIGINT},
+      </if>
+      <if test="pkSbj != null" >
+        pk_sbj = #{pkSbj,jdbcType=BIGINT},
+      </if>
+      <if test="pkSlx != null" >
+        pk_slx = #{pkSlx,jdbcType=BIGINT},
+      </if>
+      <if test="pkFak != null" >
+        pk_fak = #{pkFak,jdbcType=BIGINT},
+      </if>
+      <if test="pkZdjy != null" >
+        pk_zdjy = #{pkZdjy,jdbcType=VARCHAR},
+      </if>
+      <if test="pkJkqx != null" >
+        pk_jkqx = #{pkJkqx,jdbcType=VARCHAR},
+      </if>
+      <if test="pkJdjy != null" >
+        pk_jdjy = #{pkJdjy,jdbcType=VARCHAR},
+      </if>
+      <if test="pkJkyt != null" >
+        pk_jkyt = #{pkJkyt,jdbcType=VARCHAR},
+      </if>
+      <if test="pkJkbt != null" >
+        pk_jkbt = #{pkJkbt,jdbcType=VARCHAR},
+      </if>
+      <if test="pkJksm != null" >
+        pk_jksm = #{pkJksm,jdbcType=VARCHAR},
+      </if>
+      <if test="pkJksj != null" >
+        pk_jksj = #{pkJksj,jdbcType=VARCHAR},
+      </if>
+      <if test="pkJklx != null" >
+        pk_jklx = #{pkJklx,jdbcType=INTEGER},
+      </if>
+      <if test="pkZt != null" >
+        pk_zt = #{pkZt,jdbcType=VARCHAR},
+      </if>
+      <if test="pkWcbfb != null" >
+        pk_wcbfb = #{pkWcbfb,jdbcType=INTEGER},
+      </if>
+      <if test="pkJkfbsj != null" >
+        pk_jkfbsj = #{pkJkfbsj,jdbcType=VARCHAR},
+      </if>
+      <if test="pkZzhksj != null" >
+        pk_zzhksj = #{pkZzhksj,jdbcType=VARCHAR},
+      </if>
+      <if test="pkZzqx != null" >
+        pk_zzqx = #{pkZzqx,jdbcType=VARCHAR},
+      </if>
+      <if test="pkXp != null" >
+        pk_xp = #{pkXp,jdbcType=VARCHAR},
+      </if>
+      <if test="pkJhfbsj != null" >
+        pk_jhfbsj = #{pkJhfbsj,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pk_id = #{pkId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2p.model.Pk" >
+    update t_pk
+    set pk_jine = #{pkJine,jdbcType=BIGINT},
+      pk_glf = #{pkGlf,jdbcType=BIGINT},
+      pk_srsje = #{pkSrsje,jdbcType=BIGINT},
+      pk_yhk = #{pkYhk,jdbcType=BIGINT},
+      pk_yhua = #{pkYhua,jdbcType=BIGINT},
+      pk_sbj = #{pkSbj,jdbcType=BIGINT},
+      pk_slx = #{pkSlx,jdbcType=BIGINT},
+      pk_fak = #{pkFak,jdbcType=BIGINT},
+      pk_zdjy = #{pkZdjy,jdbcType=VARCHAR},
+      pk_jkqx = #{pkJkqx,jdbcType=VARCHAR},
+      pk_jdjy = #{pkJdjy,jdbcType=VARCHAR},
+      pk_jkyt = #{pkJkyt,jdbcType=VARCHAR},
+      pk_jkbt = #{pkJkbt,jdbcType=VARCHAR},
+      pk_jksm = #{pkJksm,jdbcType=VARCHAR},
+      pk_jksj = #{pkJksj,jdbcType=VARCHAR},
+      pk_jklx = #{pkJklx,jdbcType=INTEGER},
+      pk_zt = #{pkZt,jdbcType=VARCHAR},
+      pk_wcbfb = #{pkWcbfb,jdbcType=INTEGER},
+      pk_jkfbsj = #{pkJkfbsj,jdbcType=VARCHAR},
+      pk_zzhksj = #{pkZzhksj,jdbcType=VARCHAR},
+      pk_zzqx = #{pkZzqx,jdbcType=VARCHAR},
+      pk_xp = #{pkXp,jdbcType=VARCHAR},
+      pk_jhfbsj = #{pkJhfbsj,jdbcType=VARCHAR}
+    where pk_id = #{pkId,jdbcType=INTEGER}
+  </update>
+</mapper>

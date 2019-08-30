@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2p.mapper.YoMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2p.model.Yo" >
+    <constructor >
+      <idArg column="yo_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="yo_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="yo_passwed" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="yo_te" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="yo_myd" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="yo_sfz" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="yo_sex" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="yo_zsxm" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="yo_zt" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="yo_zheng" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="yo_fang" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="yo_zf" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="yo_sj" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="yo_ye" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="yo_yx" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="yo_yhk" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="yo_yan" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+
+  <resultMap id="row" type="com.zking.p2p.model.Yo" >
+    <result column="yo_yan" property="yoYan" javaType="java.lang.String" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    yo_id, yo_name, yo_passwed, yo_te, yo_myd, yo_sfz, yo_sex, yo_zsxm, yo_zt, yo_zheng, 
+    yo_fang, yo_zf, yo_sj, yo_ye, yo_yx, yo_yhk,yoYan
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_yo
+    where yo_id = #{yoId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_yo
+    where yo_id = #{yoId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2p.model.Yo" >
+    insert into t_yo (yo_id, yo_name, yo_passwed, 
+      yo_te, yo_myd, yo_sfz, 
+      yo_sex, yo_zsxm, yo_zt, 
+      yo_zheng, yo_fang, yo_zf, 
+      yo_sj, yo_ye, yo_yx, yo_yhk
+      )
+    values (#{yoId,jdbcType=INTEGER}, #{yoName,jdbcType=VARCHAR}, #{yoPasswed,jdbcType=VARCHAR}, 
+      #{yoTe,jdbcType=BIGINT}, #{yoMyd,jdbcType=INTEGER}, #{yoSfz,jdbcType=VARCHAR}, 
+      #{yoSex,jdbcType=VARCHAR}, #{yoZsxm,jdbcType=VARCHAR}, #{yoZt,jdbcType=VARCHAR}, 
+      #{yoZheng,jdbcType=VARCHAR}, #{yoFang,jdbcType=VARCHAR}, #{yoZf,jdbcType=VARCHAR}, 
+      #{yoSj,jdbcType=VARCHAR}, #{yoYe,jdbcType=VARCHAR}, #{yoYx,jdbcType=VARCHAR}, #{yoYhk,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2p.model.Yo" >
+    insert into t_yo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="yoId != null" >
+        yo_id,
+      </if>
+      <if test="yoName != null" >
+        yo_name,
+      </if>
+      <if test="yoPasswed != null" >
+        yo_passwed,
+      </if>
+      <if test="yoTe != null" >
+        yo_te,
+      </if>
+      <if test="yoMyd != null" >
+        yo_myd,
+      </if>
+      <if test="yoSfz != null" >
+        yo_sfz,
+      </if>
+      <if test="yoSex != null" >
+        yo_sex,
+      </if>
+      <if test="yoZsxm != null" >
+        yo_zsxm,
+      </if>
+      <if test="yoZt != null" >
+        yo_zt,
+      </if>
+      <if test="yoZheng != null" >
+        yo_zheng,
+      </if>
+      <if test="yoFang != null" >
+        yo_fang,
+      </if>
+      <if test="yoZf != null" >
+        yo_zf,
+      </if>
+      <if test="yoSj != null" >
+        yo_sj,
+      </if>
+      <if test="yoYe != null" >
+        yo_ye,
+      </if>
+      <if test="yoYx != null" >
+        yo_yx,
+      </if>
+      <if test="yoYhk != null" >
+        yo_yhk,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="yoId != null" >
+        #{yoId,jdbcType=INTEGER},
+      </if>
+      <if test="yoName != null" >
+        #{yoName,jdbcType=VARCHAR},
+      </if>
+      <if test="yoPasswed != null" >
+        #{yoPasswed,jdbcType=VARCHAR},
+      </if>
+      <if test="yoTe != null" >
+        #{yoTe,jdbcType=BIGINT},
+      </if>
+      <if test="yoMyd != null" >
+        #{yoMyd,jdbcType=INTEGER},
+      </if>
+      <if test="yoSfz != null" >
+        #{yoSfz,jdbcType=VARCHAR},
+      </if>
+      <if test="yoSex != null" >
+        #{yoSex,jdbcType=VARCHAR},
+      </if>
+      <if test="yoZsxm != null" >
+        #{yoZsxm,jdbcType=VARCHAR},
+      </if>
+      <if test="yoZt != null" >
+        #{yoZt,jdbcType=VARCHAR},
+      </if>
+      <if test="yoZheng != null" >
+        #{yoZheng,jdbcType=VARCHAR},
+      </if>
+      <if test="yoFang != null" >
+        #{yoFang,jdbcType=VARCHAR},
+      </if>
+      <if test="yoZf != null" >
+        #{yoZf,jdbcType=VARCHAR},
+      </if>
+      <if test="yoSj != null" >
+        #{yoSj,jdbcType=VARCHAR},
+      </if>
+      <if test="yoYe != null" >
+        #{yoYe,jdbcType=VARCHAR},
+      </if>
+      <if test="yoYx != null" >
+        #{yoYx,jdbcType=VARCHAR},
+      </if>
+      <if test="yoYhk != null" >
+        #{yoYhk,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <insert id="Yan" parameterType="com.zking.p2p.model.Yo" >
+        insert into t_yo(yo_yan)
+        values (#{yoYan,jdbcType=VARCHAR})
+   </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2p.model.Yo" >
+    update t_yo
+    <set >
+      <if test="yoName != null" >
+        yo_name = #{yoName,jdbcType=VARCHAR},
+      </if>
+      <if test="yoPasswed != null" >
+        yo_passwed = #{yoPasswed,jdbcType=VARCHAR},
+      </if>
+      <if test="yoTe != null" >
+        yo_te = #{yoTe,jdbcType=BIGINT},
+      </if>
+      <if test="yoMyd != null" >
+        yo_myd = #{yoMyd,jdbcType=INTEGER},
+      </if>
+      <if test="yoSfz != null" >
+        yo_sfz = #{yoSfz,jdbcType=VARCHAR},
+      </if>
+      <if test="yoSex != null" >
+        yo_sex = #{yoSex,jdbcType=VARCHAR},
+      </if>
+      <if test="yoZsxm != null" >
+        yo_zsxm = #{yoZsxm,jdbcType=VARCHAR},
+      </if>
+      <if test="yoZt != null" >
+        yo_zt = #{yoZt,jdbcType=VARCHAR},
+      </if>
+      <if test="yoZheng != null" >
+        yo_zheng = #{yoZheng,jdbcType=VARCHAR},
+      </if>
+      <if test="yoFang != null" >
+        yo_fang = #{yoFang,jdbcType=VARCHAR},
+      </if>
+      <if test="yoZf != null" >
+        yo_zf = #{yoZf,jdbcType=VARCHAR},
+      </if>
+      <if test="yoSj != null" >
+        yo_sj = #{yoSj,jdbcType=VARCHAR},
+      </if>
+      <if test="yoYe != null" >
+        yo_ye = #{yoYe,jdbcType=VARCHAR},
+      </if>
+      <if test="yoYx != null" >
+        yo_yx = #{yoYx,jdbcType=VARCHAR},
+      </if>
+      <if test="yoYhk != null" >
+        yo_yhk = #{yoYhk,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where yo_id = #{yoId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2p.model.Yo" >
+    update t_yo
+    set yo_name = #{yoName,jdbcType=VARCHAR},
+      yo_passwed = #{yoPasswed,jdbcType=VARCHAR},
+      yo_te = #{yoTe,jdbcType=BIGINT},
+      yo_myd = #{yoMyd,jdbcType=INTEGER},
+      yo_sfz = #{yoSfz,jdbcType=VARCHAR},
+      yo_sex = #{yoSex,jdbcType=VARCHAR},
+      yo_zsxm = #{yoZsxm,jdbcType=VARCHAR},
+      yo_zt = #{yoZt,jdbcType=VARCHAR},
+      yo_zheng = #{yoZheng,jdbcType=VARCHAR},
+      yo_fang = #{yoFang,jdbcType=VARCHAR},
+      yo_zf = #{yoZf,jdbcType=VARCHAR},
+      yo_sj = #{yoSj,jdbcType=VARCHAR},
+      yo_ye = #{yoYe,jdbcType=VARCHAR},
+      yo_yx = #{yoYx,jdbcType=VARCHAR},
+      yo_yhk = #{yoYhk,jdbcType=VARCHAR}
+    where yo_id = #{yoId,jdbcType=INTEGER}
+  </update>
+</mapper>

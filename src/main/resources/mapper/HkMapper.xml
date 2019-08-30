@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2p.mapper.HkMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2p.model.Hk" >
+    <constructor >
+      <idArg column="hk_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pk_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="hk_qs" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hk_hklx" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="hk_bj" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="hk_bx" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="hk_rq" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hk_zt" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hk_sjrq" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hk_sjbx" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    hk_id, pk_id, hk_qs, hk_hklx, hk_bj, hk_bx, hk_rq, hk_zt, hk_sjrq, hk_sjbx
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_hk
+    where hk_id = #{hkId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_hk
+    where hk_id = #{hkId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2p.model.Hk" >
+    insert into t_hk (hk_id, pk_id, hk_qs, 
+      hk_hklx, hk_bj, hk_bx, hk_rq, 
+      hk_zt, hk_sjrq, hk_sjbx
+      )
+    values (#{hkId,jdbcType=INTEGER}, #{pkId,jdbcType=INTEGER}, #{hkQs,jdbcType=VARCHAR}, 
+      #{hkHklx,jdbcType=BIGINT}, #{hkBj,jdbcType=BIGINT}, #{hkBx,jdbcType=BIGINT}, #{hkRq,jdbcType=VARCHAR}, 
+      #{hkZt,jdbcType=VARCHAR}, #{hkSjrq,jdbcType=VARCHAR}, #{hkSjbx,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2p.model.Hk" >
+    insert into t_hk
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="hkId != null" >
+        hk_id,
+      </if>
+      <if test="pkId != null" >
+        pk_id,
+      </if>
+      <if test="hkQs != null" >
+        hk_qs,
+      </if>
+      <if test="hkHklx != null" >
+        hk_hklx,
+      </if>
+      <if test="hkBj != null" >
+        hk_bj,
+      </if>
+      <if test="hkBx != null" >
+        hk_bx,
+      </if>
+      <if test="hkRq != null" >
+        hk_rq,
+      </if>
+      <if test="hkZt != null" >
+        hk_zt,
+      </if>
+      <if test="hkSjrq != null" >
+        hk_sjrq,
+      </if>
+      <if test="hkSjbx != null" >
+        hk_sjbx,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="hkId != null" >
+        #{hkId,jdbcType=INTEGER},
+      </if>
+      <if test="pkId != null" >
+        #{pkId,jdbcType=INTEGER},
+      </if>
+      <if test="hkQs != null" >
+        #{hkQs,jdbcType=VARCHAR},
+      </if>
+      <if test="hkHklx != null" >
+        #{hkHklx,jdbcType=BIGINT},
+      </if>
+      <if test="hkBj != null" >
+        #{hkBj,jdbcType=BIGINT},
+      </if>
+      <if test="hkBx != null" >
+        #{hkBx,jdbcType=BIGINT},
+      </if>
+      <if test="hkRq != null" >
+        #{hkRq,jdbcType=VARCHAR},
+      </if>
+      <if test="hkZt != null" >
+        #{hkZt,jdbcType=VARCHAR},
+      </if>
+      <if test="hkSjrq != null" >
+        #{hkSjrq,jdbcType=VARCHAR},
+      </if>
+      <if test="hkSjbx != null" >
+        #{hkSjbx,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2p.model.Hk" >
+    update t_hk
+    <set >
+      <if test="pkId != null" >
+        pk_id = #{pkId,jdbcType=INTEGER},
+      </if>
+      <if test="hkQs != null" >
+        hk_qs = #{hkQs,jdbcType=VARCHAR},
+      </if>
+      <if test="hkHklx != null" >
+        hk_hklx = #{hkHklx,jdbcType=BIGINT},
+      </if>
+      <if test="hkBj != null" >
+        hk_bj = #{hkBj,jdbcType=BIGINT},
+      </if>
+      <if test="hkBx != null" >
+        hk_bx = #{hkBx,jdbcType=BIGINT},
+      </if>
+      <if test="hkRq != null" >
+        hk_rq = #{hkRq,jdbcType=VARCHAR},
+      </if>
+      <if test="hkZt != null" >
+        hk_zt = #{hkZt,jdbcType=VARCHAR},
+      </if>
+      <if test="hkSjrq != null" >
+        hk_sjrq = #{hkSjrq,jdbcType=VARCHAR},
+      </if>
+      <if test="hkSjbx != null" >
+        hk_sjbx = #{hkSjbx,jdbcType=BIGINT},
+      </if>
+    </set>
+    where hk_id = #{hkId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2p.model.Hk" >
+    update t_hk
+    set pk_id = #{pkId,jdbcType=INTEGER},
+      hk_qs = #{hkQs,jdbcType=VARCHAR},
+      hk_hklx = #{hkHklx,jdbcType=BIGINT},
+      hk_bj = #{hkBj,jdbcType=BIGINT},
+      hk_bx = #{hkBx,jdbcType=BIGINT},
+      hk_rq = #{hkRq,jdbcType=VARCHAR},
+      hk_zt = #{hkZt,jdbcType=VARCHAR},
+      hk_sjrq = #{hkSjrq,jdbcType=VARCHAR},
+      hk_sjbx = #{hkSjbx,jdbcType=BIGINT}
+    where hk_id = #{hkId,jdbcType=INTEGER}
+  </update>
+</mapper>

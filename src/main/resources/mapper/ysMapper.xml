@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2p.mapper.ysMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2p.model.ys" >
+    <constructor >
+      <idArg column="ys_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="hk_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ys_bj" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="ys_lx" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="ys_bx" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="ys_rq" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ys_zt" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ys_sbx" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="ys_srq" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ys_sxf" jdbcType="BIGINT" javaType="java.lang.Long" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ys_id, hk_id, ys_bj, ys_lx, ys_bx, ys_rq, ys_zt, ys_sbx, ys_srq, ys_sxf
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_ys
+    where ys_id = #{ysId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_ys
+    where ys_id = #{ysId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2p.model.ys" >
+    insert into t_ys (ys_id, hk_id, ys_bj, 
+      ys_lx, ys_bx, ys_rq, ys_zt, 
+      ys_sbx, ys_srq, ys_sxf)
+    values (#{ysId,jdbcType=INTEGER}, #{hkId,jdbcType=INTEGER}, #{ysBj,jdbcType=BIGINT}, 
+      #{ysLx,jdbcType=BIGINT}, #{ysBx,jdbcType=BIGINT}, #{ysRq,jdbcType=VARCHAR}, #{ysZt,jdbcType=VARCHAR}, 
+      #{ysSbx,jdbcType=BIGINT}, #{ysSrq,jdbcType=VARCHAR}, #{ysSxf,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2p.model.ys" >
+    insert into t_ys
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ysId != null" >
+        ys_id,
+      </if>
+      <if test="hkId != null" >
+        hk_id,
+      </if>
+      <if test="ysBj != null" >
+        ys_bj,
+      </if>
+      <if test="ysLx != null" >
+        ys_lx,
+      </if>
+      <if test="ysBx != null" >
+        ys_bx,
+      </if>
+      <if test="ysRq != null" >
+        ys_rq,
+      </if>
+      <if test="ysZt != null" >
+        ys_zt,
+      </if>
+      <if test="ysSbx != null" >
+        ys_sbx,
+      </if>
+      <if test="ysSrq != null" >
+        ys_srq,
+      </if>
+      <if test="ysSxf != null" >
+        ys_sxf,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ysId != null" >
+        #{ysId,jdbcType=INTEGER},
+      </if>
+      <if test="hkId != null" >
+        #{hkId,jdbcType=INTEGER},
+      </if>
+      <if test="ysBj != null" >
+        #{ysBj,jdbcType=BIGINT},
+      </if>
+      <if test="ysLx != null" >
+        #{ysLx,jdbcType=BIGINT},
+      </if>
+      <if test="ysBx != null" >
+        #{ysBx,jdbcType=BIGINT},
+      </if>
+      <if test="ysRq != null" >
+        #{ysRq,jdbcType=VARCHAR},
+      </if>
+      <if test="ysZt != null" >
+        #{ysZt,jdbcType=VARCHAR},
+      </if>
+      <if test="ysSbx != null" >
+        #{ysSbx,jdbcType=BIGINT},
+      </if>
+      <if test="ysSrq != null" >
+        #{ysSrq,jdbcType=VARCHAR},
+      </if>
+      <if test="ysSxf != null" >
+        #{ysSxf,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2p.model.ys" >
+    update t_ys
+    <set >
+      <if test="hkId != null" >
+        hk_id = #{hkId,jdbcType=INTEGER},
+      </if>
+      <if test="ysBj != null" >
+        ys_bj = #{ysBj,jdbcType=BIGINT},
+      </if>
+      <if test="ysLx != null" >
+        ys_lx = #{ysLx,jdbcType=BIGINT},
+      </if>
+      <if test="ysBx != null" >
+        ys_bx = #{ysBx,jdbcType=BIGINT},
+      </if>
+      <if test="ysRq != null" >
+        ys_rq = #{ysRq,jdbcType=VARCHAR},
+      </if>
+      <if test="ysZt != null" >
+        ys_zt = #{ysZt,jdbcType=VARCHAR},
+      </if>
+      <if test="ysSbx != null" >
+        ys_sbx = #{ysSbx,jdbcType=BIGINT},
+      </if>
+      <if test="ysSrq != null" >
+        ys_srq = #{ysSrq,jdbcType=VARCHAR},
+      </if>
+      <if test="ysSxf != null" >
+        ys_sxf = #{ysSxf,jdbcType=BIGINT},
+      </if>
+    </set>
+    where ys_id = #{ysId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2p.model.ys" >
+    update t_ys
+    set hk_id = #{hkId,jdbcType=INTEGER},
+      ys_bj = #{ysBj,jdbcType=BIGINT},
+      ys_lx = #{ysLx,jdbcType=BIGINT},
+      ys_bx = #{ysBx,jdbcType=BIGINT},
+      ys_rq = #{ysRq,jdbcType=VARCHAR},
+      ys_zt = #{ysZt,jdbcType=VARCHAR},
+      ys_sbx = #{ysSbx,jdbcType=BIGINT},
+      ys_srq = #{ysSrq,jdbcType=VARCHAR},
+      ys_sxf = #{ysSxf,jdbcType=BIGINT}
+    where ys_id = #{ysId,jdbcType=INTEGER}
+  </update>
+</mapper>

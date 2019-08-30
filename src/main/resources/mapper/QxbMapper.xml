@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2p.mapper.QxbMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2p.model.Qxb" >
+    <constructor >
+      <idArg column="qxb_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="qxb_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="qxb_dj" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="qxb_nr" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="qxb_zt" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    qxb_id, qxb_name, qxb_dj, qxb_nr, qxb_zt
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_qxb
+    where qxb_id = #{qxbId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_qxb
+    where qxb_id = #{qxbId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2p.model.Qxb" >
+    insert into t_qxb (qxb_id, qxb_name, qxb_dj, 
+      qxb_nr, qxb_zt)
+    values (#{qxbId,jdbcType=INTEGER}, #{qxbName,jdbcType=VARCHAR}, #{qxbDj,jdbcType=INTEGER}, 
+      #{qxbNr,jdbcType=VARCHAR}, #{qxbZt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2p.model.Qxb" >
+    insert into t_qxb
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="qxbId != null" >
+        qxb_id,
+      </if>
+      <if test="qxbName != null" >
+        qxb_name,
+      </if>
+      <if test="qxbDj != null" >
+        qxb_dj,
+      </if>
+      <if test="qxbNr != null" >
+        qxb_nr,
+      </if>
+      <if test="qxbZt != null" >
+        qxb_zt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="qxbId != null" >
+        #{qxbId,jdbcType=INTEGER},
+      </if>
+      <if test="qxbName != null" >
+        #{qxbName,jdbcType=VARCHAR},
+      </if>
+      <if test="qxbDj != null" >
+        #{qxbDj,jdbcType=INTEGER},
+      </if>
+      <if test="qxbNr != null" >
+        #{qxbNr,jdbcType=VARCHAR},
+      </if>
+      <if test="qxbZt != null" >
+        #{qxbZt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2p.model.Qxb" >
+    update t_qxb
+    <set >
+      <if test="qxbName != null" >
+        qxb_name = #{qxbName,jdbcType=VARCHAR},
+      </if>
+      <if test="qxbDj != null" >
+        qxb_dj = #{qxbDj,jdbcType=INTEGER},
+      </if>
+      <if test="qxbNr != null" >
+        qxb_nr = #{qxbNr,jdbcType=VARCHAR},
+      </if>
+      <if test="qxbZt != null" >
+        qxb_zt = #{qxbZt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where qxb_id = #{qxbId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2p.model.Qxb" >
+    update t_qxb
+    set qxb_name = #{qxbName,jdbcType=VARCHAR},
+      qxb_dj = #{qxbDj,jdbcType=INTEGER},
+      qxb_nr = #{qxbNr,jdbcType=VARCHAR},
+      qxb_zt = #{qxbZt,jdbcType=VARCHAR}
+    where qxb_id = #{qxbId,jdbcType=INTEGER}
+  </update>
+</mapper>

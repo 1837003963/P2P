@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2p.mapper.YqMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2p.model.Yq" >
+    <constructor >
+      <idArg column="yq_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="hk_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="yq_ts" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="yq_fj" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="yq_qsf" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="yq_bz" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    yq_id, hk_id, yq_ts, yq_fj, yq_qsf, yq_bz
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_yq
+    where yq_id = #{yqId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_yq
+    where yq_id = #{yqId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2p.model.Yq" >
+    insert into t_yq (yq_id, hk_id, yq_ts, 
+      yq_fj, yq_qsf, yq_bz)
+    values (#{yqId,jdbcType=INTEGER}, #{hkId,jdbcType=INTEGER}, #{yqTs,jdbcType=BIGINT}, 
+      #{yqFj,jdbcType=BIGINT}, #{yqQsf,jdbcType=BIGINT}, #{yqBz,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2p.model.Yq" >
+    insert into t_yq
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="yqId != null" >
+        yq_id,
+      </if>
+      <if test="hkId != null" >
+        hk_id,
+      </if>
+      <if test="yqTs != null" >
+        yq_ts,
+      </if>
+      <if test="yqFj != null" >
+        yq_fj,
+      </if>
+      <if test="yqQsf != null" >
+        yq_qsf,
+      </if>
+      <if test="yqBz != null" >
+        yq_bz,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="yqId != null" >
+        #{yqId,jdbcType=INTEGER},
+      </if>
+      <if test="hkId != null" >
+        #{hkId,jdbcType=INTEGER},
+      </if>
+      <if test="yqTs != null" >
+        #{yqTs,jdbcType=BIGINT},
+      </if>
+      <if test="yqFj != null" >
+        #{yqFj,jdbcType=BIGINT},
+      </if>
+      <if test="yqQsf != null" >
+        #{yqQsf,jdbcType=BIGINT},
+      </if>
+      <if test="yqBz != null" >
+        #{yqBz,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2p.model.Yq" >
+    update t_yq
+    <set >
+      <if test="hkId != null" >
+        hk_id = #{hkId,jdbcType=INTEGER},
+      </if>
+      <if test="yqTs != null" >
+        yq_ts = #{yqTs,jdbcType=BIGINT},
+      </if>
+      <if test="yqFj != null" >
+        yq_fj = #{yqFj,jdbcType=BIGINT},
+      </if>
+      <if test="yqQsf != null" >
+        yq_qsf = #{yqQsf,jdbcType=BIGINT},
+      </if>
+      <if test="yqBz != null" >
+        yq_bz = #{yqBz,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where yq_id = #{yqId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2p.model.Yq" >
+    update t_yq
+    set hk_id = #{hkId,jdbcType=INTEGER},
+      yq_ts = #{yqTs,jdbcType=BIGINT},
+      yq_fj = #{yqFj,jdbcType=BIGINT},
+      yq_qsf = #{yqQsf,jdbcType=BIGINT},
+      yq_bz = #{yqBz,jdbcType=VARCHAR}
+    where yq_id = #{yqId,jdbcType=INTEGER}
+  </update>
+</mapper>
